@@ -16,7 +16,16 @@
           "index",
           "quickstart"
         ]
-      }
+      },
+      {
+        "group": "Getting Started",
+        "pages": [
+          "index",
+          "quickstart",
+          "Decision-1-Headcount-Walk"
+        ]
+      },
+      "meridian-staffing"
     ],
     "global": {
       "anchors": [
