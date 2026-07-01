@@ -53,8 +53,12 @@
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:victor@reqsquared.com",
+        "label": "Contact"
+      },
+      {
+        "href": "https://reqsquared.com",
+        "label": "Portfolio"
       }
     ],
     "primary": {
@@ -77,7 +81,7 @@
   },
   "footer": {
     "socials": {
-      "github": "https://github.com/requisitioniq",
+      "github": "https://github.com/ReqSquared/RequisitionIQ",
       "linkedin": "https://linkedin.com/in/valberts"
     }
   },
