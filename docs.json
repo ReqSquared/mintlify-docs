@@ -89,5 +89,6 @@
     "color": {
       "light": "#Ffffff"
     }
-  }
+  },
+  "description": "RequisitionIQ: Developing an open-source machine learning framework that shifts recruiting data from flat, static tables into dynamic analytical cubes that automatically finds explainable signals and stories hidden across organizational space. It enables TA leaders to optimize recruiter capacity, detect hiring slowdowns, and expose talent supply chain bottlenecks."
 }
