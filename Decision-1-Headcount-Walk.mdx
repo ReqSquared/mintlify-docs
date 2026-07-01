@@ -2,31 +2,43 @@
 title: "Decision 1: Headcount Walk"
 ---
 
-<Tooltip tip="Meridian Staffing is a fictional 13-person RPO specializing in U.S. federal government hiring, used throughout this guide to demonstrate RequisitionIQ." headline="Who is Meridian Staffing?">Meridian Staffing</Tooltip> has 29 open reqs for Forest Services and needs to know w**here their client's headcount will land on February 1st**, since the client has a major project initiative they need staffed.
+<Tooltip tip="Meridian Staffing is a fictional 13-person RPO specializing in U.S. federal government hiring, used throughout this guide to demonstrate RequisitionIQ." headline="Who is Meridian Staffing?">Meridian Staffing</Tooltip> has 29 open reqs for Forest Services and needs to know **where their client's headcount will land on February 1st**, since the client has a major project initiative they need staffed.
 
-RequisitionIQ uses a <Tooltip tip="A step-by-step calculation that projects ending headcount by starting with current headcount and applying known workforce changes, such as transfers, terminations, accepted offers, and predicted requisition fill dates.">headcount waterfall</Tooltip> and a <Tooltip tip="A statistical model that estimates the probability an open requisition will fill by a future date based on historical hiring patterns and the requisition's characteristics.">survival model</Tooltip> to estimate which open reqs are likely to fill by the target date.
+RequisitionIQ uses a <Tooltip tip="A step-by-step calculation that projects ending headcount by starting with current headcount and applying known workforce changes, such as transfers, terminations, accepted offers, and predicted requisition fill dates.">headcount waterfall</Tooltip> and a <Tooltip tip="A statistical model that estimates the probability an open requisition will fill by a future date based on historical hiring patterns and the requisition's characteristics.">survival model</Tooltip> to predict the likelihood  open reqs are likely to fill by the target date.
 
-The output is a forecasted ending headcount, plus the open requisitions most likely to contribute to that number.
+The output is a forecasted ending headcount, including the open requisitions most likely to contribute to that number.
 
-<Callout icon="cube">
-  **The Headcount Walk Equation:**
+<Card title="Configuration" icon="users-gear">
+  Before the headcount model can be built there are a few configurations, filters, and decisions that have to be made.
 
-  `Current HC + IN - OUT - Terms + Offers Accepted + Predicted Fills = Ending HC`
-</Callout>
+  - **Client:** U.S Federal Government
+  - **Organization:** Forest Services
+  - **Current HC Date:** 2024-01-02
+  - **Ending HC Date** 2024-02-01
+</Card>
+
+![Headcount Walk 4](/images/headcount_walk_4.png)
 
 <Steps>
   <Step title="Current HC">
+    Total number of active employees in the organization you want to model as of Current HC Date and is the start of the headcount walk.
   </Step>
   <Step title="IN">
+    Transfers of active employees from one organization to another within the Current and Ending HC Date.
   </Step>
   <Step title="OUT">
+    Active employees moving from the organization you selected to a different organization by the Ending HC Date.
   </Step>
   <Step title="Terms">
+    Future terminations the will be successfully completed by the Ending HC Date.
   </Step>
   <Step title="Offers Accepted">
+    All offers that have a Start Date between the Current and Ending HC Date. Offers that are "past due" are excluded and require their start date updated to be included in the model.
   </Step>
   <Step title="Predicted Fills">
+    RequisitionIQ deploys the COX Regression for Survival Analysis Model.
   </Step>
   <Step title="Ending HC">
+    The forecasted ending headcount with a confidence level of 95%.
   </Step>
 </Steps>
