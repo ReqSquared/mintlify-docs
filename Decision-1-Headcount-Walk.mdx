@@ -31,7 +31,7 @@ RequisitionIQ uses a <Tooltip tip="A step-by-step calculation that projects endi
 </Card>
 
 <Frame>
-  ![Headcount Walk Step 2 Nums](/images/headcount_walk_step_2_nums.png)
+  ![Headcount Walk Step 2 Nums 1](/images/headcount_walk_step_2_nums_1.png)
 </Frame>
 
 <Card title="Definitions" icon="circle-info">
@@ -69,5 +69,37 @@ RequisitionIQ uses a <Tooltip tip="A step-by-step calculation that projects endi
 ## Detailed Walkthrough
 
 <Card title="How do you go from raw ATS Data to Predicting Fills?" icon="cloud-question">
-  Read below for a quick guide on RequisitionIQ's decision object #1: Headcount Walk.
+  Read below for a quick guide on RequisitionIQ's Decision Object #1: The Headcount Walk.
 </Card>
+
+<Steps>
+  <Step title="Filled Requisitions">
+    <Frame>
+      ![Headcount Walk Step 3 No Header](/images/headcount_walk_step_3_no_header.png)
+    </Frame>
+
+    We start with every Forest Service job we've already filled. RequisitionIQ defaults to the recruiter, location, role, and how many days each one took to fill. **This history is what the model learns from.**
+  </Step>
+  <Step title="Survival Model">
+    <Frame>
+      ![Headcount Walk Step 4 No Header](/images/headcount_walk_step_4_no_header.png)
+    </Frame>
+
+    The model studies those past fill times and learns the typical timeline: how a job's odds of being filled climb day by day. From rare in the first few weeks to near-certain by  day 90.
+  </Step>
+  <Step title="Predicting Fills (Open Requisitions)">
+    <Frame>
+      ![Headcount Walk Step 5 No Header](/images/headcount_walk_step_5_no_header.png)
+    </Frame>
+
+    Then it places each  open job on the learned timeline based on how long it's already been open, and scores its chance of filling by February 1st. For Forest Service, 6 of 29 open requisitions clear the bar. **21% are predicted to fill by February 1st.**
+  </Step>
+</Steps>
+
+## Next Steps
+
+Now that the Headcount Walk is complete, we can step back and decide what action to take.\
+\
+With **6 open requisitions predicted to fill** and **12 employees expected to leave or transfer out of Forest Services**, the client team can determine whether the organization is still on track to hit its February 1st headcount target.\
+\
+If a gap remains, the next step is **Decision Object #2: Recruiter Efficiency**, where RequisitionIQ evaluates the remaining **23 open requisitions** to identify where recruiting effort can be accelerated.
