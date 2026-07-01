@@ -6,7 +6,7 @@ title: "Decision 1: Headcount Walk"
 
 RequisitionIQ uses a <Tooltip tip="A step-by-step calculation that projects ending headcount by starting with current headcount and applying known workforce changes, such as transfers, terminations, accepted offers, and predicted requisition fill dates.">headcount waterfall</Tooltip> and a <Tooltip tip="A statistical model that estimates the probability an open requisition will fill by a future date based on historical hiring patterns and the requisition's characteristics.">survival model</Tooltip> to predict the likelihood  open reqs will fill by the target end date.
 
-**The output is the predicted fill model below.**
+**The output is the predicted fill waterfall model below.**
 
 <Frame>
   ![Headcount Walk Step 1](/images/headcount_walk_step_1.png)
@@ -18,33 +18,56 @@ RequisitionIQ uses a <Tooltip tip="A step-by-step calculation that projects endi
   - **Client:** U.S Federal Government
   - **Organization:** Forest Services
   - **Current HC Date:** 2024-01-02
-  - **Ending HC Date** 2024-02-01
+  - **Ending HC Date** 2024-02-01 (target date)
+</Card>
+
+<Card title="ATS Data" icon="cube">
+  RequisitionIQ uses the below data to generate the model.
+
+  - Headcount Roster
+  - Filled Requisitions
+  - Open Requisitions
+  - Offers
 </Card>
 
 <Frame>
-  ![Headcount Walk Step 2](/images/headcount_walk_step_2.png)
+  ![Headcount Walk Step 2 Nums](/images/headcount_walk_step_2_nums.png)
 </Frame>
 
-<Steps>
-  <Step title="Current HC">
-    Total number of active employees in the organization you want to model as of Current HC Date and is the start of the headcount walk.
-  </Step>
-  <Step title="IN">
-    Transfers of active employees from one organization to another within the Current and Ending HC Date.
-  </Step>
-  <Step title="OUT">
-    Active employees moving from the organization you selected to a different organization by the Ending HC Date.
-  </Step>
-  <Step title="Terms">
-    Future terminations the will be successfully completed by the Ending HC Date.
-  </Step>
-  <Step title="Offers Accepted">
-    All offers that have a Start Date between the Current and Ending HC Date. Offers that are "past due" are excluded and require their start date updated to be included in the model.
-  </Step>
-  <Step title="Predicted Fills">
-    RequisitionIQ deploys the COX Survival Model to predict when open requisition will fill by the Ending HC Date.
-  </Step>
-  <Step title="Ending HC">
-    The forecasted ending headcount with a confidence level of 95%.
-  </Step>
-</Steps>
+<Card title="Definitions" icon="circle-info">
+  Outlined below are Steps 1 to 7 explaining the walk from Current to Ending Headcount. 
+
+  <Callout icon="square-1">
+    **Current HC:** Total number of active employees in the organization you want to model.
+  </Callout>
+
+  <Callout icon="square-2">
+    **Transfers IN:** Active employees moving into the organization you selected to model.
+  </Callout>
+
+  <Callout icon="square-3">
+    **Transfers OUT:** Active employees moving out of the organization you selected to model.
+  </Callout>
+
+  <Callout icon="square-4">
+    **Terms:** Future terminations the will be successfully completed by the <Tooltip tip="The configured Ending HC Date for the headcount walk and survival model." headline="Ending HC Date">target date</Tooltip>.
+  </Callout>
+
+  <Callout icon="square-5">
+    <Tooltip tip='All offers that have a Start Date between the Current and Ending HC Date. Offers that are "past due" are excluded and require their start date updated to be included in the model.'>Offers Accepted</Tooltip>**:** All offers that have a Start Date between the Current and <Tooltip tip="The configured Ending HC Date for the headcount walk and survival model." headline="Ending HC Date">target date</Tooltip>.
+  </Callout>
+
+  <Callout icon="square-6">
+    **Predicted Fills:** The <Tooltip tip="A statistical model that estimates the probability an open requisition will fill by a future date based on historical hiring patterns and the requisition's characteristics.">Survival Model</Tooltip> is used to predict when open requisition will fill.
+  </Callout>
+
+  <Callout icon="square-7">
+    **Ending HC:** The forecasted ending headcount with a confidence level of 95%.
+  </Callout>
+</Card>
+
+## Detailed Walkthrough
+
+<Card title="How do you go from raw ATS Data to Predicting Fills?" icon="cloud-question">
+  Read below for a quick guide on RequisitionIQ's decision object #1: Headcount Walk.
+</Card>
